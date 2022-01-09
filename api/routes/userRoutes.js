@@ -78,7 +78,7 @@ router.get(
   passport.authenticate("bearer", { session: false }),
   async (req, res) => {
     try {
-      const user = await Users.findById(req.params.id).populate();
+      const user = await Users.findById(req.params.id).populate("votedsurveys");
       if (user) {
         // checking if the Id is valid
         res.status(200).json(user);
